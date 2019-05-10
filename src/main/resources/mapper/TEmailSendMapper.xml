@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gsy.springboot.start.mapper.auto.TEmailSendMapper" >
+  <resultMap id="BaseResultMap" type="com.gsy.springboot.start.pojo.TEmailSend" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="subject" property="subject" jdbcType="VARCHAR" />
+    <result column="receivers" property="receivers" jdbcType="VARCHAR" />
+    <result column="cc" property="cc" jdbcType="VARCHAR" />
+    <result column="addattachment" property="addattachment" jdbcType="VARCHAR" />
+    <result column="send_user" property="sendUser" jdbcType="VARCHAR" />
+    <result column="created_date" property="createdDate" jdbcType="TIMESTAMP" />
+    <result column="send_success" property="sendSuccess" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>

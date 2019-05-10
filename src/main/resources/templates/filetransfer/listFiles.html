@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.springframework.org/schema/mvc">
+<head>
+    <meta charset="UTF-8">
+    <title>文件列表</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script>
+        function downloadFile(obj){
+            var filePath = $(obj).attr("useValue");
+            $.ajax({
+                type: 'POST',
+                url: "/downloadFile",
+                data: {fileRelativePath:filePath},
+                dataType:"json",
+                contentType: "application/x-www-form-urlencoded;charset=UTF-8",
+                success: function(data){
+                    var $a = $("<a>");
+                    $a.attr("href", data.data.file);
+                    $a.attr("download", data.data.filename);
+                    $("body").append($a);
+                    $a[0].click();
+                    $a.remove();
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+<h1 align="center">文件下载</h1>
+<div style="text-align: center">
+    <table border="1" style="margin: auto">
+        <tr>
+            <th>文件名</th>
+            <th>大小(KB)</th>
+        </tr>
+        <tr th:each="list:${fileList}">
+            <th><a th:href="@{'/downloadFile2/'+${list.filePathRemoveSeparator}}" th:text="${list.fileName}"></a></th>
+            <!--<th><input type="text" style="font-size: larger" onclick="downloadFile(this)" th:useValue="${list.filePath}" th:value="${list.fileName}"></th>-->
+            <th th:text="${list.fileSize}"></th>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

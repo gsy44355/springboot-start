@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.springframework.org/schema/mvc">
+<head>
+    <meta http-equiv="content-Type" content="text/html; charset=utf-8" />
+    <meta name="author" Content="gsy">
+    <meta name="copyright" Content="gsy.com" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta content="always" name="referrer">
+    <meta name="theme-color" content="#2932e1">
+    <title>验证码邮件</title>
+</head>
+<body>
+<div>
+    <div style="FONT-SIZE: 11pt"  th:text="亲爱的+${user}+，你好">
+        亲爱的用户，您好！
+    </div>
+    <br />
+    <div style="FONT-SIZE: 11pt">
+        个性化随机新闻推荐系统系统，本次请求的验证码为：
+    </div>
+    <br />
+    <br />
+    <div>
+        <span style="COLOR: #0094ff; FONT-SIZE: 40pt" th:text="${code}">213456</span>
+        <span style="COLOR: #ff0000; FONT-SIZE: 11pt">(为了保障您帐号的安全性，请在1小时内完成验证。)</span>
+    </div>
+    <br />
+    <br />
+    <hr style="BORDER-BOTTOM: #808080 0px dashed; BORDER-LEFT: #808080 0px dashed; HEIGHT: 1px; BORDER-TOP: #808080 1px dashed; BORDER-RIGHT: #808080 0px dashed" />
+    <br />
+    <div style="COLOR: #808080">
+        此邮件由系统自动发出，系统不接受回信，因此请勿直接回复。
+        <br /> 安全使用您的个性化随机推荐系统的注意事项：
+        <br /> 1、请不要在其他网站上使用相同的邮箱和密码进行注册。
+        <br /> 2、请不要告知任何人您的个性化随机新闻推荐系统密码信息，包括个性化随机推荐系统的工作人员。
+        <br />
+        <br /> 如果您错误的收到本电子邮件，请您忽略上述内容。
+    </div>
+    <br />
+    <hr style="BORDER-BOTTOM: #808080 0px dashed; BORDER-LEFT: #808080 0px dashed; HEIGHT: 1px; BORDER-TOP: #808080 1px dashed; BORDER-RIGHT: #808080 0px dashed" />
+    <div>
+        <br />
+    </div>
+    <div style="TEXT-ALIGN: right; FONT-SIZE: 11pt">
+        GSY
+    </div>
+</div>
+</body>
+</html>

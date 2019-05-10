@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.springframework.org/schema/mvc">
+<head>
+    <meta charset="UTF-8">
+    <title>文件上传</title>
+    <style>
+        .fileBox {
+            margin: 50px;
+            text-align: center;
+        }
+        .fileInputP {
+            display: inline-block;
+            width: 200px;
+            height: 30px;
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+        }
+        .fileInputP i {
+            display: inline-block;
+            width: 200px;
+            height: 30px;
+            color: #fff;
+            background: #7d8f33;
+            text-align: center;
+            line-height: 30px;
+        }
+        #fileInput {
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0;
+        }
+
+        #fileSpan {
+            display: inline-block;
+            width: 1000px;
+            height: 400px;
+            border: 2px dashed #ccc;
+            text-align: center;
+            line-height: 150px;
+        }
+
+        .fileList_parent {
+            margin: 50px auto;
+            display: none;
+        }
+
+        .fileList_parent th {
+            background: #dadada;
+            font-weight: bold;
+        }
+
+        .fileList_parent th,
+        .fileList_parent td {
+            padding: 5px;
+        }
+
+        .fileList tr:nth-of-type(2n) {
+            background: #dadada;
+        }
+        .mask{
+            margin: 0 auto;
+        }
+        #fileBtn {
+            margin-left: 50px;
+            display: none;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script th:src="@{static/js/upload.js}"></script>
+</head>
+<body>
+<div class="fileBox">
+    <p class="fileInputP vm">
+        <i>选择文件</i>
+        <!-- 选中单个文件上传 -->
+        <input type="file" multiple id="fileInput" />
+    </p>
+    <span id="fileSpan" class="vm">或者将文件拖到此处</span>
+    <div class="mask"></div>
+</div>
+<!-- 文件信息列表 -->
+<div style="text-align: center">
+<table width="50%" border="1" class="fileList_parent">
+    <thead>
+    <tr>
+        <th>名称</th>
+        <th>类型</th>
+        <th>大小</th>
+        <th>进度</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody class="fileList">
+    </tbody>
+</table>
+<input type="button" value="上传" id="fileBtn" />
+</div>
+</body>
+</html>
