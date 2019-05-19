@@ -1,5 +1,11 @@
 # Springboot-start
-1.  目前仅实现了文件传输和邮件发送功能重写
-3.  不为了某个工程而写，希望能够完整整合一整个以后工程会使用到的东西，包括一些service的整合。
-3.  后续逐步添加新功能
-4.  具体使用参见other/useProject.md
+##  实现功能
++  发送邮件
++  文件上传下载 当做ftp
++  多线程爬虫，记录本地表，可以断点重爬。
+## 使用方式
++  运行sql/random_recommend.sql,创建表
++  修改application-druid.properties中连接串
++  按照other文件夹下emailConfig.txt模板创建application-emailConfig.properties，配置自己的邮箱
++  不建议修改包名，因为需要修改的地方有点多，想拿去直接用的修改下artifactId就行了
++  已经可以使用通用mapper生成mapper xml 使用maven命令较优

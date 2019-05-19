@@ -1,4 +1,4 @@
-package com.gsy.springboot.start.mapper;
+package com.gsy.springboot.start.mapper.custom;
 
 import com.gsy.springboot.start.pojo.TbCrawlerUrl;
 
@@ -8,4 +8,5 @@ import com.gsy.springboot.start.pojo.TbCrawlerUrl;
 public interface TbCrawlerUrlCustomMapper {
     TbCrawlerUrl getOneUrl(String type);
     int deleteAll();
+    int resetAll();
 }

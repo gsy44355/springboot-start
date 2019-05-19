@@ -1,4 +1,4 @@
-package com.gsy.springboot.start.mapper;
+package com.gsy.springboot.start.mapper.custom;
 
 import java.util.Map;
 

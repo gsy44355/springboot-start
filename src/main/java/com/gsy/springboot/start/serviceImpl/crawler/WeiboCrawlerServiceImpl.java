@@ -38,6 +38,7 @@ public class WeiboCrawlerServiceImpl implements WeiboCrawlerService {
 
     @Override
     public void reStart() {
+        crawlerBaseService.resetAll();
         getUrl();
         getPicUrl();
         getPic();

@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.gsy.springboot.start.mapper.TbCrawlerUrlCustomMapper" >
+<mapper namespace="com.gsy.springboot.start.mapper.custom.TbCrawlerUrlCustomMapper" >
     <select id="getOneUrl" resultType="com.gsy.springboot.start.pojo.TbCrawlerUrl" parameterType="java.lang.String">
     SELECT * FROM tb_crawler_url t WHERE  t.type= #{type} and t.busy = '0' limit 1;
   </select>
     <delete id="deleteAll">
         delete from tb_crawler_url;
     </delete>
+    <update id="resetAll">
+        update tb_crawler_url set busy='0';
+    </update>
 
 </mapper>

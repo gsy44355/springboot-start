@@ -23,6 +23,12 @@ public interface CrawlerBaseService {
     int updateUrlToNoUse(String url);
 
     /**
+     * 将所有busy更新为0，在续传的时候调用
+     * @return
+     */
+    int resetAll();
+
+    /**
      * 添加一个Url进入Url池，设置好类型，等待线程爬取
      * @param tbCrawlerUrl tbCrawlerUrl对象，需要制定type，建议直接写pojo类三个参数的构造方法
      * @return

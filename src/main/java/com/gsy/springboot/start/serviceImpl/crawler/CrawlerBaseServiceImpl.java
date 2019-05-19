@@ -1,6 +1,6 @@
 package com.gsy.springboot.start.serviceImpl.crawler;
 
-import com.gsy.springboot.start.mapper.TbCrawlerUrlCustomMapper;
+import com.gsy.springboot.start.mapper.custom.TbCrawlerUrlCustomMapper;
 import com.gsy.springboot.start.mapper.auto.TbCrawlerUrlMapper;
 import com.gsy.springboot.start.pojo.TbCrawlerUrl;
 import com.gsy.springboot.start.service.crawler.CrawlerBaseService;
@@ -36,6 +36,12 @@ public class CrawlerBaseServiceImpl implements CrawlerBaseService {
     @Override
     public int updateUrlToNoUse(String url) {
         return tbCrawlerUrlMapper.updateByPrimaryKeySelective(new TbCrawlerUrl(url,"0"));
+    }
+
+    @Override
+    public int resetAll() {
+        tbCrawlerUrlCustomMapper.resetAll();
+        return 1;
     }
 
     @Override

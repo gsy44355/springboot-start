@@ -1,6 +1,6 @@
 package com.gsy.springboot.start.service;
 
-import com.gsy.springboot.start.mapper.TestMapper;
+import com.gsy.springboot.start.mapper.custom.TestMapper;
 import com.gsy.springboot.start.pojo.TbCrawlerUrl;
 import com.gsy.springboot.start.service.crawler.CrawlerBaseService;
 import com.gsy.springboot.start.util.LogUtil;
