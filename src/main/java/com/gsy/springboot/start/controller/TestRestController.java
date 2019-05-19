@@ -36,4 +36,10 @@ public class TestRestController {
         return a?"success111":"fail";
     }
 
+    @GetMapping("/testurl")
+    public String testUrl(){
+        testService.testaa();
+        return "1";
+    }
+
 }

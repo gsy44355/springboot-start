@@ -19,6 +19,14 @@
         <!--需要使用Java文件逆向生成时改为1.2.4就可以了-->
         <tk.mapper.verdsion>2.1.5</tk.mapper.verdsion>
         <!--<tk.mapper.verdsion>1.2.4</tk.mapper.verdsion>-->
+        <targetJavaProject>${basedir}/src/main/java</targetJavaProject>
+        <targetResourcesProject>${basedir}/src/main/resources</targetResourcesProject>
+        <!-- MyBatis Generator mapper接口的生成位置 -->
+        <targetMapperPackage>com.gsy.springboot.start.mapper.auto</targetMapperPackage>
+        <!-- MyBatis Generator model类的生成位置 -->
+        <targetModelPackage>com.gsy.springboot.start.pojo</targetModelPackage>
+        <!-- MyBatis Generator mapper.xml生成位置 -->
+        <targetXMLPackage>mapper.auto</targetXMLPackage>
     </properties>
 
     <dependencies>
@@ -66,11 +74,11 @@
             <optional>true</optional>
         </dependency>
         <!-- 阿里巴巴druid数据库连接池，目前不知道有什么用 -->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid</artifactId>
-            <version>1.1.0</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.alibaba</groupId>-->
+            <!--<artifactId>druid</artifactId>-->
+            <!--<version>1.1.10</version>-->
+        <!--</dependency>-->
         <!--mapper-->
         <dependency>
             <groupId>tk.mybatis</groupId>
@@ -87,7 +95,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
-            <version>1.1.0</version>
+            <version>1.1.10</version>
         </dependency>
         <dependency>
             <groupId>org.mybatis.generator</groupId>
@@ -105,6 +113,29 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.9</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.11.3</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/joda-time/joda-time -->
+        <!--时间包装-->
+        <!--<dependency>-->
+            <!--<groupId>joda-time</groupId>-->
+            <!--<artifactId>joda-time</artifactId>-->
+            <!--<version>2.10.2</version>-->
+        <!--</dependency>-->
+
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-joda</artifactId>-->
+        <!--</dependency>-->
     </dependencies>
 
     <build>
@@ -114,42 +145,31 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
             <!--逆向工程-->
-            <!--<plugin>
+            <!--Mybatis Generator-->
+            <plugin>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
-                <version>1.3.2</version>
+                <version>1.3.6</version>
                 <configuration>
-                    <configurationFile>src/main/resources/generatorConfig.xml</configurationFile>
+                    <configurationFile>
+                        ${basedir}/src/main/resources/mybatis-generator.xml
+                    </configurationFile>
+                    <overwrite>false</overwrite>
                     <verbose>true</verbose>
-                    <overwrite>true</overwrite>
                 </configuration>
-                <executions>
-                    <execution>
-                        <id>Generate MyBatis Artifacts</id>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                    </execution>
-                </executions>
                 <dependencies>
-                    <dependency>
-                        <groupId>org.mybatis.generator</groupId>
-                        <artifactId>mybatis-generator-core</artifactId>
-                        <version>1.3.2</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>tk.mybatis</groupId>
-                        <artifactId>mapper-spring-boot-starter</artifactId>
-                        <version>${tk.mapper.verdsion}</version>
-                    </dependency>
                     <dependency>
                         <groupId>mysql</groupId>
                         <artifactId>mysql-connector-java</artifactId>
                         <version>${mysql.version}</version>
                     </dependency>
+                    <dependency>
+                        <groupId>tk.mybatis</groupId>
+                        <artifactId>mapper</artifactId>
+                        <version>3.4.6</version>
+                    </dependency>
                 </dependencies>
-            </plugin>-->
-
+            </plugin>
         </plugins>
     </build>
 

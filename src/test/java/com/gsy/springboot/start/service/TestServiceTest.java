@@ -1,5 +1,6 @@
 package com.gsy.springboot.start.service;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,13 @@ public class TestServiceTest {
     @Autowired
     TestService testService;
     @Test
+    @Ignore
     public void testMapper() {
         System.out.println(testService.testMapper());
+    }
+    @Test
+    public void testaa(){
+        testService.testaa();
+        testService.testbb();
     }
 }

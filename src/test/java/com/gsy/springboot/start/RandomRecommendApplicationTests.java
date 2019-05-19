@@ -11,6 +11,7 @@ public class RandomRecommendApplicationTests {
 
     @Test
     public void contextLoads() {
+
     }
 
 }

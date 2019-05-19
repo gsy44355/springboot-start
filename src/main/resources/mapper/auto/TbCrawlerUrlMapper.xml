@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gsy.springboot.start.mapper.auto.TbCrawlerUrlMapper">
+  <resultMap id="BaseResultMap" type="com.gsy.springboot.start.pojo.TbCrawlerUrl">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="URL" jdbcType="VARCHAR" property="url" />
+    <result column="TYPE" jdbcType="VARCHAR" property="type" />
+    <result column="BUSY" jdbcType="VARCHAR" property="busy" />
+    <result column="INFO" jdbcType="VARCHAR" property="info" />
+  </resultMap>
+</mapper>

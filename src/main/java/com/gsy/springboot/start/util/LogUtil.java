@@ -10,16 +10,16 @@ import java.util.concurrent.ConcurrentHashMap;
  * Created By Gsy on 2019/5/6
  */
 public class LogUtil {
-    private static ConcurrentHashMap<Class,Logger> loggerMap = new ConcurrentHashMap<>();
+//    private static ConcurrentHashMap<Class,Logger> loggerMap = new ConcurrentHashMap<>();
 
-    private static Logger getLogger(Class c){
-        Logger logger = loggerMap.get(c);
-        if(logger == null){
-            logger = LoggerFactory.getLogger(c);
-            loggerMap.put(c,logger);
-//            System.out.println("创建logger");
-        }
-        return logger;
+    public static Logger getLogger(Class c){
+//        Logger logger = loggerMap.get(c);
+//        if(logger == null){
+//            logger = LoggerFactory.getLogger(c);
+//            loggerMap.put(c,logger);
+////            System.out.println("创建logger");
+//        }
+        return LoggerFactory.getLogger(c);
     }
     public static void info(Class c,String format,Object ... objects){
         getLogger(c).info(format,objects);
