@@ -5,7 +5,7 @@
 
 <generatorConfiguration>
 
-    <properties resource="application.properties" />
+    <properties resource="application-dataSource.properties" />
 
     <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
         <property name="beginningDelimiter" value="`" />
@@ -26,7 +26,7 @@
                          targetProject="${targetResourcesProject}" />
         <javaClientGenerator targetPackage="${targetMapperPackage}"
                              targetProject="${targetJavaProject}" type="XMLMAPPER" />
-        <table tableName="tb_crawler_url">
+        <table tableName="tb_sys_user">
             <!--<generatedKey column="id" sqlStatement="Mysql" identity="true" />-->
         </table>
     </context>

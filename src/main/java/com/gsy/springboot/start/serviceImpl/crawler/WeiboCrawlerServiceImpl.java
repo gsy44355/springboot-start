@@ -59,7 +59,7 @@ public class WeiboCrawlerServiceImpl implements WeiboCrawlerService {
                         crawlerBaseService.addUrl(new TbCrawlerUrl(url,"1","0"));
                         LogUtil.info(this.getClass(),"存入的AllUr={}" + url);
                     } else if (url.matches(".*?oripic.*?")) {
-                        if(!s.matches("https://weibo.cn/u/6697930990[?]filter=2&page=\\d+")){
+                        if(!s.matches(ResourceBundle.getBundle("crawler/start").getString("regexStr"))){
                             url = "https://weibo.cn"+url;
                         }
                         crawlerBaseService.addUrl(new TbCrawlerUrl(url,"2","0"));

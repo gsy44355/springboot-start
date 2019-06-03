@@ -53,7 +53,6 @@ public class CrawlerBaseServiceImplTest {
         System.out.println(a);
     }
     @Test
-    @Ignore
     public void start(){
         weiboCrawlerService.startNew();
     }

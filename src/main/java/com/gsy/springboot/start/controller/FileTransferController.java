@@ -2,6 +2,7 @@ package com.gsy.springboot.start.controller;
 
 import com.gsy.springboot.start.service.FileTransferService;
 import com.gsy.springboot.start.util.LogUtil;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +21,7 @@ import java.util.Map;
  * Created By Gsy on 2019/5/5
  */
 @Controller
+@RequiresPermissions("ftp")
 public class FileTransferController {
     @Autowired
     FileTransferService fileTransferService;

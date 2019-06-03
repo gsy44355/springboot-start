@@ -8,8 +8,12 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class TestController {
-//    @GetMapping("filetransfer")
-//    public String filetransfer(){
-//        return "filetransfer/filetransfer";
-//    }
+    @GetMapping("error403")
+    public String filetransfer(){
+        return "error403";
+    }
+    @GetMapping("index")
+    public String indexPage(){
+        return "index";
+    }
 }
