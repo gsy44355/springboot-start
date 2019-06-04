@@ -2,7 +2,7 @@
 ##  实现功能
 +  发送邮件
 +  文件上传下载 当做ftp
-+  多线程爬虫，记录本地表，可以断点重爬。
++  多线程爬虫，记录本地表，可以断点重爬。-----已删除，独立开发了新的工程--crawler,或是crawler-use-sqlite
 ## 使用方式
 +  运行sql/random_recommend.sql,创建表
 +  修改application-druid.properties中连接串

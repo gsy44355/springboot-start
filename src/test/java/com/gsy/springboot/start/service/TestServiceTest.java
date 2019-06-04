@@ -28,12 +28,6 @@ public class TestServiceTest {
         System.out.println(testService.testMapper());
     }
     @Test
-    @Ignore
-    public void testaa(){
-        testService.testaa();
-        testService.testbb();
-    }
-    @Test
     public void test1(){
         System.out.println(tbSysUserMapper.selectAll());
     }
