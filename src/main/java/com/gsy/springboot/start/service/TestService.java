@@ -8,6 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.Map;
 
 /**
@@ -39,6 +43,12 @@ public class TestService {
         String url = crawlerBaseService.getUrl("1");
         System.out.println(url);
     }
+
+//    public OutputStream cmd(HttpServletResponse httpServletResponse, HttpServletRequest httpServletRequest) throws IOException {
+//        Process process = Runtime.getRuntime().exec("cmd");
+//
+//        process.getOutputStream();
+//    }
 
 
 

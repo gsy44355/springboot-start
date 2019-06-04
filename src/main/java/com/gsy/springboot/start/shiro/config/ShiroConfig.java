@@ -53,7 +53,7 @@ public class ShiroConfig {
 		shiroFilterFactoryBean.setSecurityManager(securityManager);
 		return shiroFilterFactoryBean;
 	}
-	
+
 	/**
 	 * web应用管理配置
 	 * @param shiroRealm
@@ -69,7 +69,7 @@ public class ShiroConfig {
 		securityManager.setRealm(shiroRealm);
 		return securityManager;
 	}
-	
+
 	/**
 	 * 加密算法
 	 * @return
@@ -81,7 +81,7 @@ public class ShiroConfig {
 		hashedCredentialsMatcher.setHashIterations(1);//加密次数
 		return hashedCredentialsMatcher;
 	}
-	
+
 	/**
 	 * 记住我的配置
 	 * @return
@@ -104,7 +104,7 @@ public class ShiroConfig {
 		MemoryConstrainedCacheManager cacheManager=new MemoryConstrainedCacheManager();//使用内存缓存
 		return cacheManager;
 	}
-	
+
 	/**
 	 * 配置realm，用于认证和授权
 	 * @param hashedCredentialsMatcher
@@ -120,7 +120,7 @@ public class ShiroConfig {
 		jdbcRealm.setAuthenticationQuery(sqlQueryUserPassword);
 		return jdbcRealm;
 	}
-	
+
 	/**
 	 * 启用shiro方言，这样能在页面上使用shiro标签
 	 * @return
@@ -129,7 +129,7 @@ public class ShiroConfig {
     public ShiroDialect shiroDialect() {
         return new ShiroDialect();
     }
-	
+
 	/**
      * 启用shiro注解
      *加入注解的使用，不加入这个注解不生效
@@ -140,7 +140,7 @@ public class ShiroConfig {
         advisor.setSecurityManager(securityManager);
         return advisor;
     }
-    
+
     /**
      * 注册全局异常处理
      * @return

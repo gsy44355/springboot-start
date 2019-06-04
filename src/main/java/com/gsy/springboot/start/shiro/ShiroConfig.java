@@ -51,11 +51,11 @@
 //        return chainDefinition;
 //    }
 //
-//    @ModelAttribute(name = "subject")
-//    public Subject subject() {
-//        Subject subject =  SecurityUtils.getSubject();
-//        return subject;
-//    }
+////    @ModelAttribute(name = "subject")
+////    public Subject subject() {
+////        Subject subject =  SecurityUtils.getSubject();
+////        return subject;
+////    }
 //    @Bean
 //    public static DefaultAdvisorAutoProxyCreator getDefaultAdvisorAutoProxyCreator(){
 //        DefaultAdvisorAutoProxyCreator defaultAdvisorAutoProxyCreator=new DefaultAdvisorAutoProxyCreator();

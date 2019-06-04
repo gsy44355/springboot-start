@@ -68,7 +68,7 @@ public class FileTransferController {
     public String DownloadFile(@PathVariable("fileRelativePath") String fileRelativePath, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
         fileRelativePath = fileRelativePath.replaceAll("@path@","\\\\");
         String result = fileTransferService.downLoadFile(fileRelativePath, httpServletResponse);
-        LogUtil.info(FileTransferController.class,"是否成功={},ip={},request={},请求文件相对路径={}", result, httpServletRequest.getRemoteHost(), httpServletRequest.getRequestURI(),fileRelativePath);
+        LogUtil.info(FileTransferController.class,"下载文件是否成功={},ip={},request={},请求文件相对路径={}", result, httpServletRequest.getRemoteHost(), httpServletRequest.getRequestURI(),fileRelativePath);
         return result;
     }
     @GetMapping("/download")
@@ -81,7 +81,7 @@ public class FileTransferController {
     public ResponseEntity<InputStreamResource> downloadFile(@PathVariable("fileRelativePath") String fileRelativePath,  HttpServletRequest httpServletRequest) {
         fileRelativePath = fileRelativePath.replaceAll("@path@","\\\\");
         ResponseEntity responseEntity = fileTransferService.downLoadFile2(fileRelativePath);
-        LogUtil.info(FileTransferController.class,"是否成功={},ip={},request={},请求文件相对路径={}", responseEntity==null?"成功":"失败", httpServletRequest.getRemoteHost(), httpServletRequest.getRequestURI(),fileRelativePath);
+        LogUtil.info(FileTransferController.class,"下载文件是否成功={},ip={},request={},请求文件相对路径={}", responseEntity!=null?"成功":"失败", httpServletRequest.getRemoteHost(), httpServletRequest.getRequestURI(),fileRelativePath);
         return responseEntity;
     }
 
