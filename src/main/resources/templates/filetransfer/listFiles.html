@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>文件列表</title>
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script th:src="@{/static/js/jquery-3.4.1.min.js}"></script>
     <script>
         function downloadFile(obj){
             var filePath = $(obj).attr("useValue");

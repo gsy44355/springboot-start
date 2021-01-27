@@ -1,6 +1,8 @@
 package com.gsy.springboot.start.service;
 
+import com.gsy.springboot.start.mapper.auto.TEmailSendMapper;
 import com.gsy.springboot.start.mapper.auto.TbSysUserMapper;
+import com.gsy.springboot.start.pojo.TEmailSend;
 import com.gsy.springboot.start.util.LogUtil;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -10,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -22,6 +25,9 @@ public class TestServiceTest {
     TestService testService;
     @Autowired
     TbSysUserMapper tbSysUserMapper;
+
+    @Autowired
+    TEmailSendMapper tEmailSendMapper;
     @Test
     @Ignore
     public void testMapper() {
@@ -58,5 +64,15 @@ public class TestServiceTest {
             }
         }
         System.out.println(System.currentTimeMillis() - a);
+    }
+
+    @Test
+    public void test2(){
+        System.out.println(("----- selectAll method test ------"));
+        List<TEmailSend> userList = tEmailSendMapper.selectAll();
+        System.out.println(userList.size());
+        for (TEmailSend tbCrawlerUrl : userList) {
+            System.out.println(tbCrawlerUrl);
+        }
     }
 }

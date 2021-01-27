@@ -1,8 +1,10 @@
 package com.gsy.springboot.start.handler;
 
 import com.gsy.springboot.start.util.LogUtil;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.UnavailableSecurityManagerException;
 import org.apache.shiro.authz.AuthorizationException;
+import org.apache.shiro.authz.UnauthenticatedException;
 import org.apache.shiro.authz.UnauthorizedException;
 import org.springframework.http.HttpStatus;
 import org.springframework.ui.Model;
@@ -22,13 +24,14 @@ public class ShiroExceptionHandler {
     @ExceptionHandler(AuthorizationException.class)
     @ResponseStatus(HttpStatus.FORBIDDEN)
     public String handleException(AuthorizationException e, Model model) {
-        // you could return a 404 here instead (this is how github handles 403, so the user does NOT know there is a
-        // resource at that location)
-        LogUtil.info(this.getClass(),"AuthorizationException was thrown", e);
-//        Map<String, Object> map = new HashMap<String, Object>();
-//        map.put("status", HttpStatus.FORBIDDEN.value());
-//        map.put("message", "用户权限不足");
-//        model.addAttribute("errors", map);
+        String exceptionCall = "HostUnauthorizedException";
+        if(e instanceof UnauthenticatedException){
+            exceptionCall = "未登录";
+        }else if(e instanceof UnauthorizedException){
+            exceptionCall = "未授权";
+        }
+        model.addAttribute("message",exceptionCall);
+        LogUtil.info(this.getClass(),"shiro权限管理:权限异常={},登录用户名={}",exceptionCall, SecurityUtils.getSubject().getPrincipal());
         return "error403";
     }
 

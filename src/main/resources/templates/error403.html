@@ -30,8 +30,8 @@
             <div class="logo">
                 <h1 th:text="403"></h1>
             </div>
-            <p class="lead text-muted" th:text="权限不足">Unauthorized</p>
-            <a href="/" class="btn btn-primary">Go Home</a>
+            <p class="lead text-muted" th:text="${message}">Unauthorized</p>
+            <a th:href="@{/}" class="btn btn-primary">Go Home</a>
         </div>
     </div>
 </div>

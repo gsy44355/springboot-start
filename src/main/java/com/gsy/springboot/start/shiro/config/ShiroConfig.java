@@ -30,107 +30,109 @@ import org.springframework.web.servlet.HandlerExceptionResolver;
  */
 @Configuration
 public class ShiroConfig {
-	@Autowired
-	DruidDataSourceAutoConfigure dataSource;
+    @Autowired
+    DruidDataSourceAutoConfigure dataSource;
 
-	/**
-	 * 这是shiro的大管家，相当于mybatis里的SqlSessionFactoryBean
-	 * @param securityManager
-	 * @return
-	 */
-	@Bean
-	public ShiroFilterFactoryBean shiroFilterFactoryBean(org.apache.shiro.mgt.SecurityManager securityManager) {
-		ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
-		//登录
-		shiroFilterFactoryBean.setLoginUrl("/login.html");
-		//首页
-		shiroFilterFactoryBean.setSuccessUrl("/");
-		//错误页面，认证不通过跳转
-		shiroFilterFactoryBean.setUnauthorizedUrl("/error403");
-		//页面权限控制
-		shiroFilterFactoryBean.setFilterChainDefinitionMap(ShiroFilterMapFactory.shiroFilterMap());
+    /**
+     * 这是shiro的大管家，相当于mybatis里的SqlSessionFactoryBean
+     * @param securityManager
+     * @return
+     */
+    @Bean
+    public ShiroFilterFactoryBean shiroFilterFactoryBean(org.apache.shiro.mgt.SecurityManager securityManager) {
+        ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
+        //登录
+        shiroFilterFactoryBean.setLoginUrl("/login.html");
+        //首页
+        shiroFilterFactoryBean.setSuccessUrl("/");
+        //错误页面，认证不通过跳转
+        shiroFilterFactoryBean.setUnauthorizedUrl("/error403");
+        //页面权限控制
+        shiroFilterFactoryBean.setFilterChainDefinitionMap(ShiroFilterMapFactory.shiroFilterMap());
 
-		shiroFilterFactoryBean.setSecurityManager(securityManager);
-		return shiroFilterFactoryBean;
-	}
+        shiroFilterFactoryBean.setSecurityManager(securityManager);
+        return shiroFilterFactoryBean;
+    }
 
-	/**
-	 * web应用管理配置
-	 * @param shiroRealm
-	 * @param cacheManager
-	 * @param manager
-	 * @return
-	 */
-	@Bean
-	public DefaultWebSecurityManager securityManager(Realm shiroRealm, CacheManager cacheManager, RememberMeManager manager) {
-		DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
-		securityManager.setCacheManager(cacheManager);
-		securityManager.setRememberMeManager(manager);//记住Cookie
-		securityManager.setRealm(shiroRealm);
-		return securityManager;
-	}
+    /**
+     * web应用管理配置
+     * @param shiroRealm
+     * @param cacheManager
+     * @param manager
+     * @return
+     */
+    @Bean
+    public DefaultWebSecurityManager securityManager(Realm shiroRealm, CacheManager cacheManager, RememberMeManager manager) {
+        DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
+        securityManager.setCacheManager(cacheManager);
+        securityManager.setRememberMeManager(manager);//记住Cookie
+        securityManager.setRealm(shiroRealm);
+        return securityManager;
+    }
 
-	/**
-	 * 加密算法
-	 * @return
-	 */
-	@Bean
-	public HashedCredentialsMatcher hashedCredentialsMatcher() {
-		HashedCredentialsMatcher hashedCredentialsMatcher = new HashedCredentialsMatcher();
-		hashedCredentialsMatcher.setHashAlgorithmName("MD5");//采用MD5 进行加密
-		hashedCredentialsMatcher.setHashIterations(1);//加密次数
-		return hashedCredentialsMatcher;
-	}
+    /**
+     * 加密算法
+     * @return
+     */
+    @Bean
+    public HashedCredentialsMatcher hashedCredentialsMatcher() {
+        HashedCredentialsMatcher hashedCredentialsMatcher = new HashedCredentialsMatcher();
+        hashedCredentialsMatcher.setHashAlgorithmName("MD5");//采用MD5 进行加密
+        hashedCredentialsMatcher.setHashIterations(1);//加密次数
+        return hashedCredentialsMatcher;
+    }
 
-	/**
-	 * 记住我的配置
-	 * @return
-	 */
-	@Bean
-	public RememberMeManager rememberMeManager() {
-		Cookie cookie = new SimpleCookie("rememberMe");
+    /**
+     * 记住我的配置
+     * @return
+     */
+    @Bean
+    public RememberMeManager rememberMeManager() {
+        Cookie cookie = new SimpleCookie("rememberMe");
         cookie.setHttpOnly(true);//通过js脚本将无法读取到cookie信息
         cookie.setMaxAge(60 * 60 * 24);//cookie保存一天
-		CookieRememberMeManager manager=new CookieRememberMeManager();
-		manager.setCookie(cookie);
-		return manager;
-	}
-	/**
-	 * 缓存配置
-	 * @return
-	 */
-	@Bean
-	public CacheManager cacheManager() {
-		MemoryConstrainedCacheManager cacheManager=new MemoryConstrainedCacheManager();//使用内存缓存
-		return cacheManager;
-	}
+        CookieRememberMeManager manager=new CookieRememberMeManager();
+        manager.setCookie(cookie);
+        return manager;
+    }
+    /**
+     * 缓存配置
+     * @return
+     */
+    @Bean
+    public CacheManager cacheManager() {
+        MemoryConstrainedCacheManager cacheManager=new MemoryConstrainedCacheManager();//使用内存缓存
+        return cacheManager;
+    }
 
-	/**
-	 * 配置realm，用于认证和授权
-	 * @param hashedCredentialsMatcher
-	 * @return
-	 */
-	@Bean
-	public AuthorizingRealm shiroRealm(HashedCredentialsMatcher hashedCredentialsMatcher) {
-		JdbcRealm jdbcRealm = new JdbcRealm();
+    /**
+     * 配置realm，用于认证和授权
+     * @param hashedCredentialsMatcher
+     * @return
+     */
+    @Bean
+    public AuthorizingRealm shiroRealm(HashedCredentialsMatcher hashedCredentialsMatcher) {
+        JdbcRealm jdbcRealm = new JdbcRealm();
 
-		jdbcRealm.setDataSource(dataSource.dataSource());
-		jdbcRealm.setPermissionsLookupEnabled(true);
-		String sqlQueryUserPassword = "select user_password from tb_sys_user where user_id = ?";
-		jdbcRealm.setAuthenticationQuery(sqlQueryUserPassword);
-		return jdbcRealm;
-	}
+        jdbcRealm.setDataSource(dataSource.dataSource());
+        jdbcRealm.setPermissionsLookupEnabled(true);
+        jdbcRealm.setCredentialsMatcher(hashedCredentialsMatcher);
+        jdbcRealm.setSaltStyle(JdbcRealm.SaltStyle.COLUMN);
+        String sqlQueryUserPassword = "select user_password from tb_sys_user where user_id = ?";
+        jdbcRealm.setAuthenticationQuery(sqlQueryUserPassword);
+        return jdbcRealm;
+    }
 
-	/**
-	 * 启用shiro方言，这样能在页面上使用shiro标签
-	 * @return
-	 */
-	@Bean
+    /**
+     * 启用shiro方言，这样能在页面上使用shiro标签
+     * @return
+     */
+    @Bean
     public ShiroDialect shiroDialect() {
         return new ShiroDialect();
     }
 
-	/**
+    /**
      * 启用shiro注解
      *加入注解的使用，不加入这个注解不生效
      */

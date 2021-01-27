@@ -192,4 +192,18 @@ public class TEmailSend {
     public void setSendSuccess(String sendSuccess) {
         this.sendSuccess = sendSuccess;
     }
+
+    @Override
+    public String toString() {
+        return "TEmailSend{" +
+                "id=" + id +
+                ", subject='" + subject + '\'' +
+                ", receivers='" + receivers + '\'' +
+                ", cc='" + cc + '\'' +
+                ", addattachment='" + addattachment + '\'' +
+                ", sendUser='" + sendUser + '\'' +
+                ", createdDate=" + createdDate +
+                ", sendSuccess='" + sendSuccess + '\'' +
+                '}';
+    }
 }

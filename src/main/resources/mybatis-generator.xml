@@ -2,7 +2,7 @@
 <!DOCTYPE generatorConfiguration
         PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
-
+<!--使用方式，将该文件放在resources目录下，在pom文件中配置相应的property,每次生成就只需要运行mvn:mybatis:generator:generate-->
 <generatorConfiguration>
 
     <properties resource="application-dataSource.properties" />
@@ -13,7 +13,7 @@
         <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
             <!--自定义通用Mapper接口，将来所有生成的mapper接口都会继承这个接口-->
             <property name="mappers"
-                      value="com.gsy.springboot.start.mybatis.util.CommonMapper" />
+                      value="${targetResourcesProject}" />
         </plugin>
         <jdbcConnection driverClass="${spring.datasource.driver-class-name}"
                         connectionURL="${spring.datasource.url}"
@@ -26,7 +26,7 @@
                          targetProject="${targetResourcesProject}" />
         <javaClientGenerator targetPackage="${targetMapperPackage}"
                              targetProject="${targetJavaProject}" type="XMLMAPPER" />
-        <table tableName="tb_sys_user">
+        <table tableName="${targetTableName}">
             <!--<generatedKey column="id" sqlStatement="Mysql" identity="true" />-->
         </table>
     </context>

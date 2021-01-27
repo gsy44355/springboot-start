@@ -1,8 +1,8 @@
 package com.gsy.springboot.start.serviceImpl;
 
+import com.gsy.gsy_common_util.fileUtil.DirectoryUtils;
+import com.gsy.gsy_common_util.fileUtil.FileUtils;
 import com.gsy.springboot.start.service.FileTransferService;
-import com.gsy.springboot.start.util.DirectoryUtils;
-import com.gsy.springboot.start.util.FileUtils;
 import com.gsy.springboot.start.util.LogUtil;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.FileSystemResource;
@@ -131,6 +131,7 @@ public class FileTransferServiceImpl implements FileTransferService {
 
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public List<Map> listFiles() {
         return DirectoryUtils.listAllFilesSize(new File(downloadPath));

@@ -12,6 +12,7 @@
     <artifactId>springboot-start</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>springboot-start</name>
+    <packaging>war</packaging>
     <description>为快速开发springboot写一套自己的模板</description>
 
     <properties>
@@ -19,15 +20,25 @@
         <tk.mapper.verdsion>2.1.5</tk.mapper.verdsion>
         <targetJavaProject>${basedir}/src/main/java</targetJavaProject>
         <targetResourcesProject>${basedir}/src/main/resources</targetResourcesProject>
+        <!--通用mapper-->
+        <targetCommonMapper>com.gsy.springboot.start.mybatis.util.CommonMapper</targetCommonMapper>
         <!-- MyBatis Generator mapper接口的生成位置 -->
         <targetMapperPackage>com.gsy.springboot.start.mapper.auto</targetMapperPackage>
         <!-- MyBatis Generator model类的生成位置 -->
         <targetModelPackage>com.gsy.springboot.start.pojo</targetModelPackage>
         <!-- MyBatis Generator mapper.xml生成位置 -->
         <targetXMLPackage>mapper.auto</targetXMLPackage>
+        <!--需要生成的table名-->
+        <targetTableName>t_email_send</targetTableName>
+        <skipTests>true</skipTests>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -47,11 +58,6 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
         </dependency>
         <!---===========================================================-->
 
@@ -139,12 +145,11 @@
             <artifactId>thymeleaf-extras-shiro</artifactId>
             <version>2.0.0</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.github.theborakompanioni/thymeleaf-extras-shiro -->
-        <!--<dependency>-->
-            <!--<groupId>com.github.theborakompanioni</groupId>-->
-            <!--<artifactId>thymeleaf-extras-shiro</artifactId>-->
-            <!--<version>1.2.1</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>com.gsy</groupId>
+            <artifactId>gsy-common-util</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
 
 
         <!-- https://mvnrepository.com/artifact/joda-time/joda-time -->
@@ -162,6 +167,8 @@
     </dependencies>
 
     <build>
+        <!--项目名称，可以修改-->
+        <finalName>springboot</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
